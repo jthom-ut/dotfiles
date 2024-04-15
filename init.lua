@@ -41,6 +41,7 @@ require('packer').startup(function(use)
   use 'tpope/vim-surround'
   use 'vim-scripts/ReplaceWithRegister'
   use {'dracula/vim', as = 'dracula'}
+  use 'preservim/nerdcommenter'
 
   -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then
