@@ -25,13 +25,15 @@ echo "Installing packer..."
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
-echo "Linking configuration files [zshrc, p10k.zsh, init.lua]..."
+echo "Linking configuration files [.zshrc, .p10k.zsh, init.lua, .gitconfig]..."
 rm -rf ~/.zshrc
 ln -s /workspaces/.codespaces/.persistedshare/dotfiles/zshrc ~/.zshrc
 ln -s /workspaces/.codespaces/.persistedshare/dotfiles/p10k.zsh ~/.p10k.zsh
 rm -rf ~/.config/nvim/init.lua
 mkdir -p ~/.config/nvim
 ln -s /workspaces/.codespaces/.persistedshare/dotfiles/init.lua ~/.config/nvim/init.lua
+rm -rf ~/.gitconfig
+ln -s /workspaces/.codespaces/.persistedshare/dotfiles/gitconfig ~/.gitconfig
 
 source ~/.zshrc
 
