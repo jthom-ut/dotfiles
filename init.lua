@@ -42,6 +42,7 @@ require('packer').startup(function(use)
   use 'vim-scripts/ReplaceWithRegister'
   use {'dracula/vim', as = 'dracula'}
   use 'preservim/nerdcommenter'
+  use 'tyru/open-browser-github.vim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then
@@ -97,6 +98,27 @@ vim.api.nvim_set_keymap('n', '<leader>k', ':wincmd k<CR>', {noremap = true, sile
 vim.api.nvim_set_keymap('n', '<leader>l', ':wincmd l<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>+', ':vertical resize +5<CR>', {silent = true})
 vim.api.nvim_set_keymap('n', '<leader>-', ':vertical resize -5<CR>', {silent = true})
+vim.api.nvim_create_user_command("Cfpath", function()
+    local path = vim.fn.expand("%:p")
+    vim.fn.setreg("+", path)
+    vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
+vim.api.nvim_create_user_command("Crpath", function()
+  local path = vim.fn.expand("%")
+  vim.fn.setreg("+", path)
+  vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
+-- Copy to clipboard
+vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>Y', '"+yg_', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>y', '"+y', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>yy', '"+yy', { noremap = true, silent = true })
+
+-- Paste from clipboard
+vim.api.nvim_set_keymap('n', '<leader>p', '"+p', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>P', '"+P', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<leader>p', '"+p', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<leader>P', '"+P', { noremap = true, silent = true })
 
 -- Autocommands for handling various settings dynamically
 vim.cmd [[
