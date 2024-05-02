@@ -78,6 +78,18 @@ vim.api.nvim_set_keymap('n', '<C-n>', ':NERDTreeToggle<CR>', {noremap = true, si
 vim.api.nvim_set_keymap('n', ',n', ':NERDTreeFind<CR>', {noremap = true, silent = true})
 vim.g.NERDTreeWinSize = 60
 
+vim.api.nvim_create_user_command(
+  'Rg',
+  function(opts)
+    -- Construct the rg command with options
+    local rg_command = string.format('rg --column --line-number --no-heading --color=always --smart-case --hidden --glob "!.git/*" %s', vim.fn.shellescape(opts.args))
+
+    -- Call fzf.vim's grep function with rg_command
+    vim.fn['fzf#vim#grep'](rg_command, 1, vim.fn['fzf#vim#with_preview'](), false)
+  end,
+  { nargs = '*', complete = 'file' }
+)
+
 -- FZF and related mappings
 vim.api.nvim_set_keymap('n', '<c-p>', "fugitive#Head() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'", {expr = true, noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>s', ':Rg<space>', {noremap = true})
