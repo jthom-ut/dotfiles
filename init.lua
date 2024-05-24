@@ -43,6 +43,9 @@ require('packer').startup(function(use)
   use {'dracula/vim', as = 'dracula'}
   use 'preservim/nerdcommenter'
   use 'tyru/open-browser-github.vim'
+  --use 'altercation/vim-colors-solarized'
+  use 'morhetz/gruvbox'
+  use 'fatih/vim-go'
 
   -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then
@@ -69,6 +72,22 @@ vim.o.updatetime = 300
 vim.o.encoding = 'utf-8'
 vim.cmd 'syntax enable'
 vim.cmd 'filetype plugin indent on'
+vim.g.go_def_mode = 'gopls'
+vim.g.go_highlight_types = 1
+vim.g.go_highlight_fields = 1
+vim.g.go_highlight_functions = 1
+vim.g.go_highlight_function_calls = 1
+vim.g.go_highlight_operators = 1
+vim.g.go_highlight_extra_types = 1
+vim.g.go_highlight_build_constraints = 1
+vim.g.go_highlight_generate_tags = 1
+
+-- Enable True Color
+if vim.fn.has('termguicolors') == 1 then
+  vim.opt.termguicolors = true
+end
+
+vim.cmd 'colorscheme gruvbox'
 
 -- Set leader key
 vim.g.mapleader = " "
@@ -154,7 +173,7 @@ autocmd BufWritePre * :call StripTrailingWhitespaces()
 
 -- Lualine and Treesitter setup
 require('lualine').setup {
-  options = { theme = 'solarized_dark' }
+  options = { theme = 'gruvbox' }
 }
 require('nvim-treesitter.configs').setup {}
 
