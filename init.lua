@@ -172,10 +172,11 @@ endfunction
 autocmd BufWritePre * :call StripTrailingWhitespaces()
 ]]
 
--- Lualine and Treesitter setup
+-- Setup with options
 require('lualine').setup {
   options = { theme = 'gruvbox' }
 }
 require('nvim-treesitter.configs').setup {}
+require("CopilotChat").setup {}
 
 -- Additional mappings and settings can be added below
