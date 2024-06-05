@@ -177,6 +177,6 @@ require('lualine').setup {
   options = { theme = 'gruvbox' }
 }
 require('nvim-treesitter.configs').setup {}
-require("CopilotChat").setup {}
+require('CopilotChat').setup {}
 
 -- Additional mappings and settings can be added below
