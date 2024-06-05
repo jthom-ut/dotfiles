@@ -46,6 +46,7 @@ require('packer').startup(function(use)
   --use 'altercation/vim-colors-solarized'
   use 'morhetz/gruvbox'
   use 'fatih/vim-go'
+  use 'CopilotC-Nvim/CopilotChat.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then
