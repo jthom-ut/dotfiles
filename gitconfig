@@ -1,4 +1,4 @@
 [push]
 	autoSetupRemote = true
 [alias]
-  fixup = "!f() { git add . && git commit -m \"fixup $(date '+%Y-%m-%d %H:%M:%S')\" && git push; }; f"
+  fu = "!f() { git add . && git commit -m \"fixup $(date '+%Y-%m-%d %H:%M:%S')\" && git push; }; f"
