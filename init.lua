@@ -43,10 +43,12 @@ require('packer').startup(function(use)
   use {'dracula/vim', as = 'dracula'}
   use 'preservim/nerdcommenter'
   use 'tyru/open-browser-github.vim'
+  use 'kinoute/vim-hivacruz-theme'
   --use 'altercation/vim-colors-solarized'
-  use 'morhetz/gruvbox'
+  --use 'morhetz/gruvbox'
   use 'fatih/vim-go'
   use 'CopilotC-Nvim/CopilotChat.nvim'
+  use 'nvim-pack/nvim-spectre'
 
   -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then
@@ -88,7 +90,7 @@ if vim.fn.has('termguicolors') == 1 then
   vim.opt.termguicolors = true
 end
 
-vim.cmd 'colorscheme gruvbox'
+vim.cmd 'colorscheme hivacruz'
 
 -- Set leader key
 vim.g.mapleader = " "
@@ -174,9 +176,14 @@ autocmd BufWritePre * :call StripTrailingWhitespaces()
 
 -- Setup with options
 require('lualine').setup {
-  options = { theme = 'gruvbox' }
+  --options = { theme = 'hivacruz' }
 }
 require('nvim-treesitter.configs').setup {}
-require('CopilotChat').setup {}
+require("CopilotChat").setup {}
+require('spectre').setup {}
+
+vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").toggle()<CR>', {
+    desc = "Toggle Spectre"
+})
 
 -- Additional mappings and settings can be added below
